@@ -1,0 +1,520 @@
+﻿
+@{
+    ViewBag.Title = "FormBuilder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Style{
+    <link href="~/Content/Form.css" rel="stylesheet" />
+}
+
+@section Header{
+
+    @{
+        Html.RenderPartial("_Header");
+    }
+}
+
+@section Content
+{
+    <section id="mainconatiner" class="rightContent col-lg-12 paddingZero" ng-controller="FormCtrl" data-ng-init="InitForm()">
+        <div class="middle-section">
+            <div class="paddingZero row marginZero pull-left" id="LeftMenu" ng-class="{width310: IsShowLeftSection}">
+                <div class="add-form-element" ng-class="{transition: IsShowLeftSection}" ng-click="LeftMenuOpen()">
+                    <span class="add-form-text">Add form element</span>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+
+                <div class="leftPanel" ng-class="{transition: !IsShowLeftSection}">
+                    
+                    <div class="fieldsPanel">
+                        <div class="fieldHeader">
+                            <div class="row marginZero fieldHeader-content">
+                                <h3 class="pull-left">Form Elements</h3>
+                                <button aria-label="Close Account Info Modal Box" class="close-btn pull-right" ng-click="LeftMenuClose()">×</button>
+                            </div>
+                            <div class="tab">
+                                <button class="tablinks active" onclick="showInnerPanels(event,'basic')">Basic</button>
+                                <button class="tablinks" onclick="showInnerPanels(event,'ejControls')">Ej-Controls</button>
+                            </div>
+
+                        </div>
+
+                        <div id="basic" class="tabcontent" style="display: block;">
+                            <div class="fieldselection">
+                                <div class="fieldscroller">
+                                    <ul class="fieldSection-list forBasics" ondragover="allowDrop(event)">
+                                        <li role="button" id="HtmlText" dataname="Text" datatype="text" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_head">
+                                            <div class="field-icon">
+                                                <i class="fa fa-square-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Text</div>
+                                        </li>
+                                        <li role="button" id="HtmlNumeric" dataname="Numeric" datatype="numeric" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_fullname">
+                                            <div class="field-icon">
+                                                <i class="fa fa-square-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Numeric</div>
+                                        </li>
+                                        <li role="button" id="HtmlEmail" dataname="Email" datatype="email" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_email">
+                                            <div class="field-icon">
+                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Email</div>
+                                        </li>
+                                        <li role="button" id="HtmlAddress" dataname="Address" datatype="address" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_address">
+                                            <div class="field-icon">
+                                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Address</div>
+                                        </li>
+                                        <li role="button" id="HtmlPhone" dataname="Phone" datatype="text" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_phone">
+                                            <div class="field-icon">
+                                                <i class="fa fa-mobile" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Phone</div>
+                                        </li>
+                                        <li role="button" id="HtmlCheckBox" dataname="Check Box" datatype="checkbox" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_datetime">
+                                            <div class="field-icon">
+                                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Check Box</div>
+                                        </li>
+                                        <li role="button" id="HtmlRadio" dataname="Radio" datatype="radio" draggable="true" class="basic-field-item" ondragstart="drag(event)" data-fieldtype="control_time">
+                                            <div class="field-icon">
+                                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Radio</div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="list-group" ondragover="allowDrop(event)">
+                                        <li class="list-header">
+                                            <div>GRID</div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="twelverow">
+                                                <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="one-col" ondragstart="drag(event)">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 grid-column"><div class="twelverow-header">COL-1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="twelverow">
+                                                <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="two-col" ondragstart="drag(event)">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6 grid-column"><div class="twelverow-header">COL-1</div></div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6 grid-column"><div class="twelverow-header">COL-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="twelverow">
+                                                <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="three-col" ondragstart="drag(event)">
+                                                    <div class="col-md-4 col-sm-4 col-xs-4 grid-column"><div class="twelverow-header">COL-1</div></div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-4 grid-column"><div class="twelverow-header">COL-2</div></div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-4 grid-column"><div class="twelverow-header">COL-3</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="twelverow">
+                                                <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="four-col" ondragstart="drag(event)">
+                                                    <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-1</div></div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-2</div></div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-3</div></div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="twelverow">
+                                                <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="six-col" ondragstart="drag(event)">
+                                                    <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-1</div> </div>
+                                                    <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-2</div> </div>
+                                                    <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-3</div> </div>
+                                                    <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-4</div> </div>
+                                                    <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-5</div> </div>
+                                                    <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-6</div></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ejControls" class="tabcontent">
+                            <div class="fieldselection">
+                                <div class="fieldscroller">
+                                    <ul class="fieldSection-list forejcontrols" ondragover="allowDrop(event)">
+                                        <li class="fieldSection-category"></li>
+                                        <li role="button" id="grid" draggable="true" class="field-item" ondragstart="drag(event)" data-fieldtype="control_head">
+                                            <div class="field-icon">
+                                                <i class="fa fa-table" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Grid</div>
+                                        </li>
+                                        <li role="button" id="chart" draggable="true" class="field-item" ondragstart="drag(event)" data-fieldtype="control_head">
+                                            <div class="field-icon">
+                                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Chart</div>
+                                        </li>
+                                        <li role="button" id="field_item_control_list" class="field-item" data-fieldtype="control_fullname">
+                                            <div class="field-icon">
+                                                <i class="fa fa-list" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">List</div>
+                                        </li>
+                                        <li role="button" draggable="true" id="datepicker" class="field-item" data-fieldtype="control_datetime" ondragstart="drag(event)">
+                                            <div class="field-icon">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Date Picker</div>
+                                        </li>
+                                        <li role="button" id="ejcheckbox" class="field-item"  draggable="true" data-fieldtype="control_checkbox" ondragstart="drag(event)">
+                                            <div class="field-icon">
+                                                <i class="fa fa-square-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="field-name">Check Box</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <ul class="list-group" ondragover="allowDrop(event)">
+                                    <li class="list-header" style="list-style: none;">
+                                        <div>GRID</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="twelverow">
+                                            <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="one-col" ondragstart="drag(event)">
+                                                <div class="col-md-12 col-sm-12 col-xs-12 grid-column"><div class="twelverow-header">COL-1</div></div>
+                                            </div>
+                                        </div>
+                                        <div class="twelverow">
+                                            <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="two-col" ondragstart="drag(event)">
+                                                <div class="col-md-6 col-sm-6 col-xs-6 grid-column"><div class="twelverow-header">COL-1</div></div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6 grid-column"><div class="twelverow-header">COL-2</div></div>
+                                            </div>
+                                        </div>
+                                        <div class="twelverow">
+                                            <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="three-col" ondragstart="drag(event)">
+                                                <div class="col-md-4 col-sm-4 col-xs-4 grid-column"><div class="twelverow-header">COL-1</div></div>
+                                                <div class="col-md-4 col-sm-4 col-xs-4 grid-column"><div class="twelverow-header">COL-2</div></div>
+                                                <div class="col-md-4 col-sm-4 col-xs-4 grid-column"><div class="twelverow-header">COL-3</div></div>
+                                            </div>
+                                        </div>
+                                        <div class="twelverow">
+                                            <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="four-col" ondragstart="drag(event)">
+                                                <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-1</div></div>
+                                                <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-2</div></div>
+                                                <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-3</div></div>
+                                                <div class="col-md-3 col-sm-3 col-xs-3 grid-column"><div class="twelverow-header">C-4</div></div>
+                                            </div>
+                                        </div>
+                                        <div class="twelverow">
+                                            <div class="form-group grid-column-pane col-md-12 paddingZero" draggable="true" id="six-col" ondragstart="drag(event)">
+                                                <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-1</div> </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-2</div> </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-3</div> </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-4</div> </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-5</div> </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-6 grid-column"><div class="twelverow-header">C-6</div></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Properties-section padding0 float-setting-container" ng-class="{transitionX: ShowProperty}" ng-init="ShowProperty=false">
+                <div class="fieldsPanel-header">
+                    <button aria-label="Close Account Info Modal Box" class="close-btn" ng-click="FloatImageCloseClick(controlproperties.key)">&times;</button>
+                    <div class="header-text" style="text-transform:uppercase">{{controlproperties.name}}</div>
+                </div>
+                <div class="tabs">
+                    <ul class="list-inline nav nav-tabs property-tab">
+                        <li class="active tab-menu"><a data-toggle="tab" href="#General">General</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="General" class="tab-pane fade in active col-md-12 gray-bg">
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'datepicker'">
+                                <div class="form-group mt10">
+                                    <label>Title</label>                            
+                                    <input type="text" class="form-control" ng-model="controlproperties.title" placeholder="Select date" name="txt" ng-change="updateDatePickerLabel(controlproperties.title)">
+                                </div>
+                                <div class="form-group mt10">
+                                    <label>Date Formate:</label>
+                                    <input id="bookSelect" ej-dropdownlist e-datasource="datepickerFormat" e-fields="datepickerFormatFields" e-value="value" e-width="width" e-change="updateDatePickerFormate" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Watermark Text:</label>
+                                    <input type="text" class="form-control" ng-model="watermarkText" placeholder="Select date" name="txt" ng-change="datePickerWatermarkTextChange(watermarkText)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enable / disable:</label>
+                                    <input id="datepickercheckbox" class="e-chkbox" type="checkbox" ng-model="IsControlActive" ng-change="datePickerEnable(IsControlActive)" style="height: 20px; width: 20px;" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Validation Required/ not required:</label>
+                                    <input type="checkbox" class="e-chkbox" checked="checked" style="height: 20px; width: 20px;" />
+                                </div>
+                                <div class="form-group mt10">
+                                    <label>Localization</label>
+                                    <input id="localization" ej-dropdownlist e-datasource="cultureList" e-fields="datepickerCultureFields" e-change="updateDatepickerCulture" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Maximum Date:</label>
+                                    <input id="MaxDatePicker" ej-datepicker e-change="setMaxDate" e-width="100%" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Minimum Date:</label>
+                                    <input id="mindate" ej-datepicker e-change="setMinDate" e-width="100%" />
+                                </div>
+                            </div>
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'grid'">
+                                <h4>Edit column</h4>
+                                <div class="form-group">
+                                    <label>Column Name:</label>
+                                    <input id="Editcolumn" ej-dropdownlist e-datasource="columnList" e-fields="columnFields" />
+                                </div>
+                                <div class="form-group">
+                                    <label>New name for column:</label>
+                                    <input type="text" class="form-control"  ng-model="EditedColumnName"placeholder="Enter text" name="txt">
+                                </div>
+                                <button type="button" class="btn btn-primary mb10" ng-click="EditColumnDetail()">Update</button>
+                                <h4>Add column</h4>                              
+                                <div class="form-group">
+                                    <label>New name for column:</label>
+                                    <input type="text" class="form-control" ng-model="AddColumnName" placeholder="Enter text" name="txt">
+                                </div>
+                                <button type="button" class="btn btn-primary mb10" ng-click="Addcolumn()">Add</button>
+                                <h4>Delete column</h4>                                
+                                <div class="form-group">
+                                    <label>Delete column name:</label>
+                                    <input type="text" class="form-control" ng-model="DeleteColumnName" placeholder="Enter text" name="txt">
+                                </div>
+                                <button type="button" class="btn btn-primary mb10" ng-click="DeleteColumn()">Delete</button>                              
+                                                         
+                                <div class="form-group">
+                                    <input type="checkbox" id="AllowPaging" name="subscribe" ng-model="allowpaging" ng-change="allowPagingChange(allowpaging)">
+                                    <label for="AllowPaging">Allow Paging</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="sorting"  name="allowsorting" ng-model="allowsorting" ng-change="allowSortingChange(allowsorting)">
+                                    <label for="sorting">Allow Sorting</label>
+                                </div>                              
+                            </div>
+
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'chart'">
+                                <div class="form-group">
+                                    <label>Title:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <div class="form-group">
+                                    <label>Size:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="ChartLegend" name="subscribe" value="newsletter">
+                                    <label for="ChartLegend">Legend Visible</label>
+                                </div>
+                                <h4>Y-Axis</h4>
+                                <div class="form-group">
+                                    <label>Min range:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <div class="form-group">
+                                    <label>Max range:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <div class="form-group">
+                                    <label>Interval:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <h4>X-Axis</h4>
+                                <div class="form-group">
+                                    <label>Min range:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <div class="form-group">
+                                    <label>Max range:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                                <div class="form-group">
+                                    <label>Interval:</label>
+                                    <input type="text" class="form-control" placeholder="Enter text" name="txt">
+                                </div>
+                            </div>
+
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'HtmlText'">
+                                <div class="form-group">
+                                    <div>
+                                        <label>Title Name:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.title" placeholder="Select date" name="txt" ng-change="updateTextTitleLabel(controlproperties.title)">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>Place Holder:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.properties.placeholder" placeholder="Select date" name="txt" ng-change="updateTextPlaceHolderLabel(controlproperties.properties.placeholder)">
+                                </div>
+                            </div>
+
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'HtmlNumeric'">
+                                <div class="form-group">
+                                    <div>
+                                        <label>Title Name:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.title" placeholder="Select date" name="txt" ng-change="updateNumberTitleLabel(controlproperties.title)">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>Place Holder:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.properties.placeholder" placeholder="Select date" name="txt" ng-change="updateNumberPlaceHolderLabel(controlproperties.properties.placeholder)">
+                                </div>
+                            </div>
+
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'HtmlEmail'">
+                                <div class="form-group">
+                                    <div>
+                                        <label>Title Name:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.title" placeholder="Select date" name="txt" ng-change="updateEmailTitleLabel(controlproperties.title)">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>Place Holder:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.properties.placeholder" placeholder="Select date" name="txt" ng-change="updateEmailPlaceHolderLabel(controlproperties.properties.placeholder)">
+                                </div>
+                            </div>
+
+                            <div class="tab-section-content" ng-show="controlproperties.key == 'HtmlAddress'">
+                                <div class="form-group">
+                                    <div>
+                                        <label>Title Name:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.title" placeholder="Select date" name="txt" ng-change="updateTextAreaTitleLabel(controlproperties.title)">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>Place Holder:</label>
+                                    </div>
+                                    <input id="HtmlTextTitle" class="form-control" ng-model="controlproperties.properties.placeholder" placeholder="Select date" name="txt" ng-change="updateTextAreaPlaceHolderLabel(controlproperties.properties.placeholder)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-middle" ng-class="{transitionCenter: IsShowLeftSection, transitionCenterRight: ShowProperty}">
+                <div class="btn-download pull-right" style="margin-left: 15px;">
+                    <div class="dropdown">
+                        <button class="btn btn-info btn-download1" style="float:right" type="button" data-toggle="dropdown" id="addressSearch">
+                            Export
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-disabled="true" class="disabled"><a href="#">JS</a></li>
+                            <li ng-disabled="true" class="disabled"><a href="#">TS</a></li>
+                            <li ng-click="downloadDocument(true)"><a href="#">ANGULAR 1</a></li>
+                            <li ng-disabled="true" class="disabled"><a href="#">ANGULAR 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="btn btn-info btn-download1" style="float:right" type="button" id="addressSearch"
+                        ng-click="downloadDocument(false)">
+                    Preview
+                </button>                
+
+                <div class="workarea row marginZero" style="background:white;" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="parent" style="padding: 20px;">
+                        <div class="form-container">
+
+                            <div class="drag-container">
+                                <div class="drag-dashed row marginZero">
+                                    <div class="drag-text">
+                                        Drag your control
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="btn btn-primary">Submit</div>*@
+            </div>
+        </div>
+    </section>
+
+    <script type="text/ng-template" id="DynamicFormTemplate">
+        <form class="p15" name="DynamicAngularForm" novalidate>
+            <div class="form-group form-field-container row margin0"> @*ng-repeat="Form in DynamicForm" ng-click="EditFormFieldClick(Form, $event)">*@
+                <div class="col-md-12 padding0 pull-left">
+                    <div style="text-align: left;">
+                        <label ng-class="Form.Required ? 'error-symbol' : ''">{{Form.Name}}</label>
+                    </div>
+                    <div ng-switch="Form.Type">
+                        <div ng-switch-when="text">
+                            <input type="text" class="form-control" name="{{Form.Id}}" placeholder="{{Form.Name}}" />
+                        </div>
+                        <div ng-switch-when="textarea">
+                            <textarea type="text" class="form-control" name="{{Form.Id}}" placeholder="{{Form.Name}}" rows="4"></textarea>
+                        </div>
+                        <div ng-switch-when="email">
+                            <input type="email" class="form-control" name="{{Form.Id}}" placeholder="{{Form.Name}}" />
+                        </div>
+                        <div ng-switch-when="dropdown">
+                            <select class="form-control" placeholder="{{Form.Name}}" ng-options="mobile.text for mobile in RoleList" name="{{Form.Id}}">
+                                <option value="" class="hide"></option>
+                            </select>
+                        </div>
+                        <div ng-switch-when="radio">
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="{{Form.Id}}" />
+                                    <span class="">{{Form.Name}}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div ng-switch-when="checkbox">
+                            <div>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="{{Form.Id}}" />
+                                    <span class="">{{Form.Name}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-3 pull-left">
+                    <i class="fa fa-times" ng-click="RemoveFormField(Form)"></i>
+                </div>*@
+            </div>
+        </form>
+    </script>
+}
+
+@section Script{
+    <script>
+        function showInnerPanels(event, tabName) {
+            var i;
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+
+
+
+    </script>
+    <script src="~/scripts/Form.js"></script>
+}

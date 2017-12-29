@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> @ViewBag.Title </title>
+    <link rel="icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/Content/Layout.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/ej.theme.min.css" rel="stylesheet" />
+    <link href="~/Content/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Common.css" rel="stylesheet" />
+    @*<link href="~/Content/style.css" rel="stylesheet" />*@
+    <link href="~/Content/ejgrid.responsive.css" rel="stylesheet" />
+
+    @RenderSection("Style", required: false)
+
+</head>
+<body ng-app="FormBuilderApp" class="ng-cloak">
+
+    @RenderSection("Header", required: false)
+    <div>
+        <div class="flex body-container">
+            @*@{
+                Html.RenderPartial("_LeftMenu", (UserBase)ViewBag.UserBase);
+            }*@
+            <div id="RightSection" class="right-section row marginZero">
+                <div class="main-content-container">
+                    @RenderSection("Content", required: false)
+                </div>
+            </div>
+        </div>
+        <div class="layout-footer-container">
+            <div class="layout-footer text-center">&copy; @DateTime.Now.Year. Syncfusion Form builder™, All Rights Reserved.</div>
+        </div>
+    </div>
+
+    <script src="~/scripts/jquery-1.11.0.min.js"></script>
+    <script src="~/scripts/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="~/scripts/jquery.globalize.min.js"></script>
+    <script src="~/scripts/jsrender.min.js"></script>
+    <script src="~/scripts/angular.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @*<script src="http://cdn.syncfusion.com/15.4.0.17/js/web/ej.web.all.min.js"></script>
+        <script src="http://ngjq.syncfusion.com/scripts/ej.widget.angular.min.js"></script>*@
+    <script src="~/scripts/latestej.web.all.min.js"></script>
+    <script src="~/scripts/latestej.widget.angular.min.js"></script>
+    <script src="~/scripts/toastr.min.js"></script>
+    <script src="~/scripts/Common.js"></script>
+    
+    @RenderSection("Script", required: false)
+</body>
+</html>
+

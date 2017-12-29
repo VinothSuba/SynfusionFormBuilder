@@ -1,0 +1,131 @@
+﻿@model SyncfusionFormBuilder.Models.AccountModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <title>Signin</title>
+    <link href="~/Content/Layout.css" rel="stylesheet" />
+    <link href="~/Content/SignIn.css" rel="stylesheet" />
+
+    <style>
+        .form-group {
+            margin-bottom: 25px !important;
+        }
+
+        .field-validation-error
+{
+   color:red!important;
+}
+    </style>
+</head>
+<body>
+    <iframe src="http://maltain360.com/pano.aspx?ref=120003127"></iframe>
+
+    <header id="Header" class="mainHeader">
+        @*<div class="headerLeft">
+                <img src="~/Content/Images/Final.png" class="logo" title="Curriculum Station" />
+            </div>*@
+
+    </header>
+
+
+    <div class="row margin0 sign-in-outer-container">
+
+        <section class="sign-in-container">
+
+            <div class="sign-panel pull-left" style="height: 330px;">
+                <div class="headerLeft">
+                    <img src="~/Content/Images/Final.png" class="logo" title="Curriculum Station" />
+                </div>
+                @*<div class="sign-in-header text-center">Welcome! Please sign in</div>*@
+
+                <div class="sign-in-form">
+
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="" style="margin-top: 15px;">
+                            <div class="form-group">
+                                <div class="padding0">
+                                    <div class="mb10 hidden">Email</div>
+                                    @Html.TextBoxFor(model => model.Email, "", new { @class = "form-control input-border", @placeholder = "Email" })
+                                    @*<input type="text" placeholder="Username" name="EmailId"
+                                        class="form-control input-group input-border" ng-model="SignInDetail.EmailId" required/>*@
+                                </div>
+                                @*<span class="error" ng-cloak ng-show="SignInForm.EmailId.$error.required && signInDetailSubmit">
+                                        Please enter user id
+                                    </span>*@
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                            <div class="form-group">
+                                <div class="padding0">
+                                    <div class="mb10 hidden">Password</div>
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control input-border", @placeholder = "Password" })
+
+                                    @*<input type="password" placeholder="Password" class="form-control input-group input-border" name="Password"
+                                        id="Password" data-errormessage="Password" ng-model="SignInDetail.Password" required/>*@
+                                </div>
+                                @*<span class="error" ng-cloak ng-show="SignInForm.Password.$error.required && signInDetailSubmit">
+                                        Please enter password
+                                    </span>
+                                    <span class="error" ng-cloak ng-if="ShowInvalidError">Invalid username or password</span>*@
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+
+                            <div class="form-group margin0 sign-in-button-container">
+                                <div class="sign-in-button col-xs-12 padding0" style="margin-top: 10px;">
+                                    @*<button class="home-button">SIGN IN</button>*@
+                                    <input type="submit" class="btn home-button" value="SIGN IN" />
+                                </div>
+                            </div>
+
+                            @Html.HiddenFor(model => model.ReturnUrl)
+
+                            @*<div class="form-group forgot-password text-center">
+                                    <a href="#" class="link-blue showwaitingpopup">Forgot your password?</a>
+                                </div>*@
+
+                            <div class="form-group devider">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="sign-in-panel-footer">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group devider">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="sign-in-footer-container">
+        <div class="sign-in-footer text-center">&copy; @DateTime.Now.Year. Syncfusion Form Builder™, All Rights Reserved.</div>
+    </div>
+
+    <script src="~/scripts/jquery-1.11.0.min.js"></script>
+    <script>
+        $(document)
+            .ready(function () {
+                setTimeout(function () {
+                    $("#krpanoSWFObject div div").last().remove();
+                    $("#krpanoSWFObject div div div").remove()
+                }, 3000);
+                
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+﻿@model UserBase
+
+<div class="pull-left leftmentctrl" ng-controller="LeftMenuCtrl">
+    <ul class="left-menu-header expand hidden-xs">
+        <li class="sa-tooltip menu-icon hamburger hidden-xs">
+            <a href="" class="" id="">
+                <i class="fa fa-bars hamburger-icon"></i>
+            </a>
+        </li>
+    </ul>
+    <aside class="left-menu expand hidden-xs" id="LeftNavMenu">
+        <div class="leftMenu">
+            <ul class="">
+                <li class="left-menu-divider"></li>
+
+                @if (Model.HasPermission("dashboard"))
+                {
+                    <li id="Home" title="My Dashboard" class="sa-tooltip sub-menu">
+                        <a href="/home/dashboard">
+                            <i class="icon-Homepage---Icons-updated_MyDashboard"></i>
+                            <span class="icon-text">My Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="left-menu-divider"></li>
+                }
+
+                @*<li id="AlertNotification" title="Alerts & Notifications" class="sa-tooltip sub-menu">
+                        <a href="">
+                            <i class="icon-Homepage---Icons-updated_alertsnnotification"></i>
+                            <span class="icon-text">Alerts & Notifications</span>
+                        </a>
+                    </li>
+
+                    <li class="left-menu-divider"></li>*@
+
+                <li id="Analytics" title="My Inventory" class="sa-tooltip sub-menu">
+                    <a href="/inventory/inventory">
+                        <i class="icon-Homepage---Icons-updated_analytics"></i>
+                        <span class="icon-text">My Inventory</span>
+                    </a>
+                </li>
+
+                <li class="left-menu-divider"></li>
+
+                @if (Model.AccountType != "serviceprovider")
+                {
+                    
+
+                    @*<li id="Operations" title="Operations" class="sa-tooltip sub-menu" ng-class="{'active': LeftOperation}" ng-click="LeftOperation = !LeftOperation">
+                            <a href="">
+                                <i class="icon-Homepage---Icons-updated_Operations"></i>
+                                <span class="icon-text">Operations</span>
+                                <i ng-if="!LeftOperation" class="icon-Homepage---Icons-updated_Dropdown-close pull-right"></i>
+                                <i ng-if="LeftOperation" class="icon-Homepage---Icons-updated_Dropdown-open pull-right"></i>
+                            </a>
+                        </li>
+
+                        <li id="MyInventory" title="My Inventory" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftOperation">
+                            <a href="">
+                                <span class="icon-text">My Inventory</span>
+                            </a>
+                        </li>
+
+                        <li id="My Contacts" title="My Contacts" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftOperation">
+                            <a href="">
+                                <span class="icon-text">My Contacts</span>
+                            </a>
+                        </li>
+
+                        <li id="MyExpense" title="My Expense" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftOperation">
+                            <a href="">
+                                <span class="icon-text">My Expense</span>
+                            </a>
+                        </li>
+
+                        <li id="MyOrder" title="My Order" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftOperation">
+                            <a href="">
+                                <span class="icon-text">My Order</span>
+                            </a>
+                        </li>
+
+                        <li id="MyMessages" title="My Messages" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftOperation">
+                            <a href="">
+                                <span class="icon-text">My Messages</span>
+                            </a>
+                        </li>
+
+                        <li id="MyReports" title="My Reports" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftOperation">
+                            <a href="">
+                                <span class="icon-text">My Reports</span>
+                            </a>
+                        </li>
+
+                        <li class="left-menu-divider"></li>*@
+
+                    <li id="Deployment" title="Deployment" class="sa-tooltip sub-menu" ng-class="{'active': LeftDeployment}" ng-click="LeftDeployment= !LeftDeployment">
+                        <a href="">
+                            <i class="icon-Homepage---Icons-updated_Deployment"></i>
+                            <span class="icon-text">Deployment</span>
+                            <i ng-if="!LeftDeployment" class="icon-Homepage---Icons-updated_Dropdown-close pull-right"></i>
+                            <i ng-if="LeftDeployment" class="icon-Homepage---Icons-updated_Dropdown-open pull-right"></i>
+                        </a>
+                    </li>
+
+                    <li id="CloudServices" title="Cloud Services" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': solutionsets}" ng-if="LeftDeployment">
+                        <a href="/deployment/solutionsets">
+                            <span class="icon-text">Solution Sets</span>
+                        </a>
+                    </li>
+
+                    <li id="DigitalEDU" title="Digital EDU" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': solutions}" ng-if="LeftDeployment">
+                        <a href="/deployment/solutions">
+                            <span class="icon-text">Solutions</span>
+                        </a>
+                    </li>
+
+                    <li id="IntelligentSystems" title="Intelligent Systems" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': services}" ng-if="LeftDeployment">
+                        <a href="/deployment/services">
+                            <span class="icon-text">Services</span>
+                        </a>
+                    </li>
+
+                    <li id="Marketplace" title="Marketplace" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': functions}" ng-if="LeftDeployment">
+                        <a href="/deployment/functions">
+                            <span class="icon-text">Functions</span>
+                        </a>
+                    </li>
+
+                    <li id="SpecialOffers" title="Special Offers" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': resources}" ng-if="LeftDeployment">
+                        <a href="/deployment/resources">
+                            <span class="icon-text">Resources</span>
+                        </a>
+                    </li>
+
+                    <li id="SpecialOffers" title="Special Offers" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': content}" ng-if="LeftDeployment">
+                        <a href="/deployment/content">
+                            <span class="icon-text">Content</span>
+                        </a>
+                    </li>
+
+                    <li id="SpecialOffers" title="Special Offers" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': systems}" ng-if="LeftDeployment">
+                        <a href="/deployment/systems">
+                            <span class="icon-text">Systems</span>
+                        </a>
+                    </li>
+                    <li id="SpecialOffers" title="Special Offers" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': tools}" ng-if="LeftDeployment">
+                        <a href="/deployment/tools">
+                            <span class="icon-text">Tools</span>
+                        </a>
+                    </li>
+
+                    <li class="left-menu-divider"></li>
+
+                    <li id="Support" title="Support" class="sa-tooltip sub-menu" ng-click="LeftSupport = !LeftSupport">
+                        <a href="">
+                            <i class="icon-Homepage---Icons-updated_Support"></i>
+                            <span class="icon-text">Support</span>
+                            <i ng-if="!LeftSupport" class="icon-Homepage---Icons-updated_Dropdown-close pull-right"></i>
+                            <i ng-if="LeftSupport" class="icon-Homepage---Icons-updated_Dropdown-open pull-right"></i>
+                        </a>
+                    </li>
+
+                    <li id="IncidentManager" title="Incident Manager" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftSupport">
+                        <a href="">
+                            <span class="icon-text">Incident Manager</span>
+                        </a>
+                    </li>
+
+                    <li id="RemoteMonitoring" title="Remote Monitoring" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftSupport">
+                        <a href="">
+                            <span class="icon-text">Remote Monitoring</span>
+                        </a>
+                    </li>
+
+                    <li id="DeviceManager" title="Device Manager" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftSupport">
+                        <a href="">
+                            <span class="icon-text">Device Manager</span>
+                        </a>
+                    </li>
+
+                    <li id="HelpDesk" title="Help Desk" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftSupport">
+                        <a href="">
+                            <span class="icon-text">Help Desk</span>
+                        </a>
+                    </li>
+
+                    <li id="Slack" title="Slack" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftSupport">
+                        <a href="">
+                            <span class="icon-text">Slack</span>
+                        </a>
+                    </li>
+
+                    <li id="Skype" title="Skype" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftSupport">
+                        <a href="">
+                            <span class="icon-text">Skype</span>
+                        </a>
+                    </li>
+
+                    <li class="left-menu-divider"></li>
+
+                    <li id="Resources" title="Resources" class="sa-tooltip sub-menu" ng-click="LeftResources = !LeftResources">
+                        <a href="">
+                            <i class="icon-Homepage---Icons-updated_Resources"></i>
+                            <span class="icon-text">Resources</span>
+                            <i ng-if="!LeftResources" class="icon-Homepage---Icons-updated_Dropdown-close pull-right"></i>
+                            <i ng-if="LeftResources" class="icon-Homepage---Icons-updated_Dropdown-open pull-right"></i>
+                        </a>
+                    </li>
+
+                    <li id="Knowledgebase" title="Knowledge Base" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftResources">
+                        <a href="">
+                            <span class="icon-text">Knowledge Base</span>
+                        </a>
+                    </li>
+
+                    <li id="TrainingVideos" title="Training Videos" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftResources">
+                        <a href="">
+                            <span class="icon-text">Training Videos</span>
+                        </a>
+                    </li>
+
+                    <li id="Brakkett" title="Brakkett" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftResources">
+                        <a href="">
+                            <span class="icon-text">Brakkett</span>
+                        </a>
+                    </li>
+
+                    <li id="DiagramTool" title="Diagram Tool" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftResources">
+                        <a href="">
+                            <span class="icon-text">Diagram Tool</span>
+                        </a>
+                    </li>
+
+                    <li id="DocumentLibrary" title="Document Library" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftResources">
+                        <a href="">
+                            <span class="icon-text">Document Library</span>
+                        </a>
+                    </li>
+                }
+
+                @if (Model.AccountType == "serviceprovider" && Model.Role == "Super Admin")
+                {
+                    <li id="Manage" title="Manage" class="sa-tooltip sub-menu" ng-click="LeftManage = !LeftManage">
+                        <a href="">
+                            <i class="icon-Homepage---Icons-updated_Resources"></i>
+                            <span class="icon-text">Manage</span>
+                            <i ng-if="!LeftManage" class="icon-Homepage---Icons-updated_Dropdown-close pull-right"></i>
+                            <i ng-if="LeftManage" class="icon-Homepage---Icons-updated_Dropdown-open pull-right"></i>
+                        </a>
+                    </li>
+
+                    @if (Model.HasPermission("signuprequest"))
+                    {
+                        <li id="Knowledgebase" title="Request" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftManage">
+                            <a href="/admin/request">
+                                <span class="icon-text">Sign-up Request</span>
+                            </a>
+                        </li>
+                    }
+
+                    @if (Model.HasPermission("organization"))
+                    {
+                        <li id="TrainingVideos" title="Organization" class="sa-tooltip sub-menu collapse-menu" ng-if="LeftManage">
+                            <a href="/admin/organization">
+                                <span class="icon-text">Organization</span>
+                            </a>
+                        </li>
+                    }
+
+                    <li id="Brakkett" title="Market Place" class="sa-tooltip sub-menu collapse-menu" ng-class="{'active': IsMarketPlace}" ng-if="LeftManage">
+                        <a href="/admin/marketplace">
+                            <span class="icon-text">Marketplace</span>
+                        </a>
+                    </li>
+
+                }
+
+                <li class="left-menu-divider"></li>
+
+                <li id="Admin" title="Admin" class="sa-tooltip sub-menu li-admin" ng-class="{'active': AdminMenu}">
+                    <div class="left-menu-divider"></div>
+                    <a href="/admin/setup">
+                        <i class="icon-Homepage---Icons-updated_admin"></i>
+                        <span class="icon-text">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</div>
